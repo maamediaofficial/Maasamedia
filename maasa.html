@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maasamedia - Influencer Marketing Agency</title>
+    <style>
+        /* RESET AND BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #6C63FF;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #5a52d5;
+            transform: translateY(-2px);
+        }
+        
+        /* HEADER STYLES */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10pxrgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            height: 50px;
+            width: 150px;
+            background: #6C63FF;
+            border-radius: 8px;
+            display: flex;
+            align-items: centr;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* DESKTOP NAVIGATION */
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .desktop-nav li {
+            margin-left: 30px;
+        }
+        
+        .desktop-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .desktop-nav a:hover {
+            color: #6C63FF;
+        }
+        
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6C63FF;
+            transition: width 0.3s ease;
+        }
+        
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }        
+        /* MOBILE MENU BUTTON */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #333;
+            padding: 5px;
+        }
+        
+        /* MOBILE NAVIGATION */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-nav a {
+            text-decoration: none;
+            color: #333;
+           font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-nav a:hover {
+            color: #6C63FF;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointe;
+            color: #333;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: #6C63FF;
+            color: white;
+            padding: 180p 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* ABOUT SECTION */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .abouttext {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* SERVICES SECTION */
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grd;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .service-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: #6C63FF;
+            margin-bottom: 20px;
+        }
+        
+        /* CONTACT SECTION */
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column
+            align-items: center;
+        }
+        
+        .email-btn {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: #2A2D3E;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+       }
+        
+        .footer-logo {
+            height: 40px;
+            width: 120px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-left: 20px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+       }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE STYLES */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn{
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .foter-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .footer-links li {
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+           }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-container {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                height: 40px;
+                width: 120px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head><body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo"><img class="container" src="Screenshot_20250923-115316.jpg"></div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn">☰</button>
+           
+            <div class="mobile-nav">
+                <button class="close-menu">×</button>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="overlay"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">           
+             <h1>Amplify Your Brand with MAASAMEDIA</h1>
+            <p>Connecting brands and influencers with the right influencers with the right others to create authentic engagement and drive real results.</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>What is an influencer Marketing Agency?</h3>
+                    <p>An influencer marketing agency specializes in connecting brands with social media influencers and vice versa who can authentically promote their products or services to an engageging audiences or pay them to promote a product.</p>
+                    <p>At Maasamedia, we understand that successful influencer campaigns are built on strategic partnerships, data-driven insights, and creative storytelling that resonates with target audiences.</p>
+                    <p>Our team of experts work tirelessly to identify the perfect influencers for your brand, manage campaigns from conception to execution, and measure results to ensure maximum ROI.</p>
+                </div>
+                <div class="about-image">
+                    <img src="IMG-20251011-WA0000.jpg" alt="Maasamedia Team Working">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" lass="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p>We employ a comprehensive research process to find the perfect influencers for your brand:</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Audience Analysis</h3>
+                    <p>We analyze your target audience demographics, interests, and online behavior to identify which influencer audiences align with your brand.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Performance Metrics</h3>
+                    <p>We evaluate potential influencers based on engagement rates, audience authenticity, content quality, and past campaign performance.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="ervice-icon">🤝</div>
+                    <h3>Brand and influencer alignment</h3>
+                    <p>We ensure influencer's values, content style, and audience demographics perfectly match your brand identity and campaign goals.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>ROI Tracking</h3>
+                    <p>We implement tracking mechanisms to measure campaign performance and optimize influencer partnerships for maximum return on investment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Contact Us</h2>
+                <p>Ready to elevate your brand with us? Get in touch @ the email below</p>
+                
+                <div class="contact-info">
+                    <a href="mailto:hello@maaamedia.online" class="btn email-btn">hello@maasamedia.online</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <!-- LinkedIn link placeholder (hidden for now) -->
+                    <li style="display: none;"><a href="#" id="linkedin-link">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Maasamedia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            constmobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const closeMenuBtn = document.querySelector('.close-menu');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const overlay = document.querySelector('.overlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            
+            // Open mobile menu
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileNav.classList.add('active');
+               overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close mobile menu
+            function closeMobileMenu() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            closeMenuBtn.addEventListener('click', closeMobileMenu);
+            overlay.addEventListener('click', closeobileMenu);
+            
+            // Close menu when clicking on mobile nav links
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId= this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPositin,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
